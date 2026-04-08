@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import useFetch from "../hooks/useFetch";
+import { useAuth } from "../context/AuthContext";
 
 const ClienteProducts = () => {
   const [products, setProducts] = useState([]);
@@ -15,9 +16,10 @@ const ClienteProducts = () => {
       setProducts(data);
     }
   }, [data]);
+
+  const { logout } = useAuth();
   function salir() {
-    localStorage.clear();
-    navigate("/Login");
+    logout();
   }
 
   return (
@@ -45,8 +47,8 @@ const ClienteProducts = () => {
           </span>
         </div>
         <nav className="flex items-center gap-4">
-            <Link to="/cliente">Pedidos</Link>
-            <Link to="/cliente/productos">Productos</Link>
+          <Link to="/cliente">Pedidos</Link>
+          <Link to="/cliente/productos">Productos</Link>
         </nav>
         <div className="flex items-center gap-4">
           <span className="text-slate-400 text-sm">

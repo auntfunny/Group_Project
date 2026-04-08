@@ -1,11 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+
+
 export default function Login() {
     const [form, setForm] = useState({ email: "", password: "" })
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const {login} = useAuth()
 
     function handleChange(e) {
         setForm({ ...form, [e.target.name]: e.target.value, })
@@ -17,33 +20,8 @@ export default function Login() {
         console.log(form)
         setError("")
         setLoading(true)
-        try {
-            const res = await fetch("https://api-funval-g6.onrender.com/auth/login", {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(form)
-            })
-            const data = await res.json()
-            if (!res.ok) {
-                setError(data.detail || "credenciales incorrectas")
-                console.log(error)
-                return
-            }
-
-
-            console.log(data)
-            localStorage.setItem("token", data.access_token)
-            localStorage.setItem("username", data.user_name)
-            localStorage.setItem("user_rol", data.user_role)
-            if (data.user_role==="admin") {
-                navigate("/")
-            }else{
-                navigate("/cliente")
-            }
-            
-        } catch (error) {
-            console.log(error)
-        }
+        login(form);
+        
     }
 
     return (

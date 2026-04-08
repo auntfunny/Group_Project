@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import { useAuth } from "../context/AuthContext";
 export default function ClienteHome() {
   const [pedidos, setPedidos] = useState([]);
   const nombre = localStorage.getItem("username");
@@ -8,14 +9,16 @@ export default function ClienteHome() {
   const { data, error, loading } = useFetch(
     "https://api-funval-g6.onrender.com/orders/",
   );
+  
   useEffect(() => {
     if (data) {
       setPedidos(data);
     }
   }, [data]);
+  
+  const {logout} = useAuth();
   function salir() {
-    localStorage.clear();
-    navigate("/Login");
+    logout()
   }
   return (
     <div className="min-h-screen bg-slate-950 text-white">
