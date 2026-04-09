@@ -16,7 +16,7 @@ function useFetch(url, { method, body, headers, authentication } = {}) {
           method: method ? method : "GET",
           url: url,
           data: body ? body : null,
-          headers: {
+          headers: headers ? {...headers, Authorization: `Bearer ${token}`}: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },

@@ -6,6 +6,6 @@ import { useAuth } from "../context/AuthContext";
     if (!user.token) {
       return <Navigate to="/Login"></Navigate>;
     }
-    return user.role === "admin" ? <Navigate to="/"></Navigate> : <Outlet />;
+    return user.role === "admin" ? <Navigate to="/produtos"></Navigate> : <Outlet />;
   }
   export default PrivateRouteCliente;
