@@ -12,15 +12,6 @@ function useFetch(url, { method, body, headers, authentication } = {}) {
     async function fetchURL() {
       setLoading(true);
       try {
-        console.log({
-          method: method ? method : "GET",
-          url: url,
-          data: body ? JSON.stringify(body)  : null,
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-        });
         const { data } = await axios({
           method: method ? method : "GET",
           url: url,

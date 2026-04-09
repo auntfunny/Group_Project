@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard";
 import useFetch from "../hooks/useFetch";
 import Header from "../components/Header";
 
-const ClienteProducts = () => {
+const Products = () => {
   const [products, setProducts] = useState([]);
   const { data, error, loading } = useFetch(
     "https://api-funval-g6.onrender.com/products/",
@@ -14,6 +14,7 @@ const ClienteProducts = () => {
     }
   }, [data]);
 
+  
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
@@ -39,4 +40,4 @@ const ClienteProducts = () => {
   );
 };
 
-export default ClienteProducts;
+export default Products;
