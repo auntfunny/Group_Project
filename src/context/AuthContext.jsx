@@ -36,9 +36,9 @@ export function AuthProvider({ children }) {
         role: data.user_role,
       });
       if (data.user_role === "cliente") {
-        navigate("/cliente");
+        navigate("/cliente/productos");
       } else {
-        navigate("/");
+        navigate("/productos");
       }
     }
   }, [data]);

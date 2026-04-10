@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between shadow-md">
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+        <div className="w-8 h-8 rounded-lg bg-blue-600 shadow shadow-blue-600/40 flex items-center justify-center">
           <svg
             className="w-4 h-4 text-white"
             fill="none"
@@ -40,7 +40,7 @@ const Header = () => {
         </span>
         <button
           onClick={salir}
-          className="flex items-center gap-2 bg-red-600/20 hover:bg-red-600/40 border border-red-500/30 text-red-400 hover:text-red-300 text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200"
+          className="flex items-center gap-2 bg-red-600/20 hover:bg-red-600/40 shadow shadow-red-600/40 border border-red-500/30 text-red-400 hover:cursor-pointer hover:text-red-300 text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200"
         >
           <svg
             className="w-4 h-4"

@@ -8,7 +8,7 @@ import { useAuth } from "../context/AuthContext";
       return <Navigate to="/Login"></Navigate>;
     }
     return user.role === "cliente" ? (
-      <Navigate to="/cliente"></Navigate>
+      <Navigate to="/cliente/productos"></Navigate>
     ) : (
       <Outlet />
     );

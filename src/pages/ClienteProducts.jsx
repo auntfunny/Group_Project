@@ -6,7 +6,7 @@ import Header from "../components/Header";
 const ClienteProducts = () => {
   const [products, setProducts] = useState([]);
   const { data, error, loading } = useFetch(
-    "https://api-funval-g6.onrender.com/products/",
+    "https://api-funval-g6.onrender.com/products/?skip=0&limit=100&category=books",
   );
   useEffect(() => {
     if (data) {
