@@ -4,34 +4,30 @@ import useFetch from "../hooks/useFetch";
 import Header from "../components/Header";
 
 const ClienteProducts = () => {
-  const [products, setProducts] = useState([]);
-  const { data, error, loading } = useFetch(
-    "https://api-funval-g6.onrender.com/products/",
-  );
+  const [productos, setProductos] = useState([]);
+  const { data } = useFetch("https://api-funval-g6.onrender.com/products/");
+
   useEffect(() => {
     if (data) {
-      setProducts(data);
+      setProductos(data);
     }
   }, [data]);
 
-
   return (
     <div className="min-h-screen bg-slate-950 text-white">
-      {/* Navbar */}
       <Header />
 
-      {/* Content */}
-      <main className="px-6 py-8 max-w-6xl mx-auto">
+      <main className="mx-auto max-w-7xl px-6 py-8">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-white">Products</h2>
-          <p className="text-slate-400 text-sm mt-1">
-            {products.length} Productos encontrados
+          <h2 className="text-2xl font-bold text-white">Productos</h2>
+          <p className="mt-1 text-sm text-slate-400">
+            {productos.length} productos encontrados
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {products.map((product) => (
-            <ProductCard product={product} key={product.id} />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {productos.map((producto) => (
+            <ProductCard product={producto} key={producto.id} />
           ))}
         </div>
       </main>
